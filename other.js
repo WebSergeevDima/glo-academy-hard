@@ -1,10 +1,8 @@
 let n = 266219;
 
-let sum = 0;
-
-String(n).split('').forEach(num => {
-  sum += +num;
-});
+let sum = String(n).split('').reduce((acc, num) => {
+  return acc += +num;
+}, 0);
 
 console.log('Произведение (умножение) цифр: ', sum);
 
