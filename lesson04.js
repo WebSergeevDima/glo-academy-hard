@@ -4,13 +4,21 @@ const placeholder = 'Передайте строку';
 
 function getSmallContent(str) {
 
-    if (!isNaN(parseFloat(str))) {
-        alert('Вы передали НЕ строку!');
-        getSmallContent(prompt(placeholder));
-    }
+    str = str.trim();
 
-    alert('Короткая строка: ' + (str.trim().length > 30 ? str.trim().slice(0, 30) + '...' : str.trim()));
+    /*
+    try {
+        typeof str !== 'string';
+        throw new TypeError('Ошибка');
+    } catch (e) {}
+    */
+
+    if (typeof str !== 'string') {
+        return '';
+    } else {
+        return str.length > 30 ? str.slice(0, 30) + '...' : str;
+    }
 
 }
 
-getSmallContent(prompt(placeholder));
+console.log(getSmallContent(prompt(placeholder)));
